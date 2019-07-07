@@ -1,0 +1,36 @@
+{
+  "name": "short-url",
+  "version": "1.0.0",
+  "description": "Project to short url's",
+  "main": "index.js",
+  "scripts": {
+    "test": "env NODE_ENV=test mocha ./specs/*.spec.js ",
+    "start": "nodemon --inspect index.js --config nodemon.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Veberb/short-url.git"
+  },
+  "author": "Lucas Veber de Brida",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Veberb/short-url/issues"
+  },
+  "homepage": "https://github.com/Veberb/short-url#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "boom": "^7.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "glob": "^7.1.4",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^6.0.1",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
+  }
+}
