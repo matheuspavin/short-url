@@ -13,3 +13,7 @@ exports.create = async ({ userId, url }) => {
 	const urlObj = new urlModel({ user: userId, url, shortUrl: shortUrl() });
 	return urlObj.save();
 };
+
+exports.delete = async ({ id }) => {
+	return urlModel.findByIdAndDelete(id);
+};
