@@ -1,11 +1,12 @@
-const path = require('path')
+const path = require('path');
+const _ = require('lodash');
 
-const env = process.env.NODE_ENV
-const dev = env === 'development'
-const staging = env === 'staging'
-const production = env === 'production'
+const env = process.env.NODE_ENV;
+const dev = env === 'development';
+const staging = env === 'staging';
+const production = env === 'production';
 
-module.exports = {
+const DEFAULT_ENV_CONFIG = {
 	// database
 	db: 'mongodb://localhost:27017/short-url',
 
@@ -21,4 +22,6 @@ module.exports = {
 
 	// app path
 	path: path.normalize(`${__dirname}/..`)
-}
+};
+
+module.exports = _.merge({}, DEFAULT_ENV_CONFIG);
