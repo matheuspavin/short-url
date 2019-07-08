@@ -13,3 +13,7 @@ exports.create = async ({ id }) => {
 exports.delete = async ({ id }) => {
 	return userModel.findByIdAndDelete(id);
 };
+
+exports.getById = async ({ id }) => {
+	return userModel.findById(id);
+};
