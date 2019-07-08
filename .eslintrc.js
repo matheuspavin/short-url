@@ -1,28 +1,18 @@
 module.exports = {
 	env: {
 		browser: true,
-		es6: true,
 		node: true
 	},
 	extends: 'eslint:recommended',
-	globals: {
-		Atomics: 'readonly',
-		SharedArrayBuffer: 'readonly',
-		describe: 'readonly',
-		it: 'readonly',
-		before: 'readonly'
-	},
 	parserOptions: {
-		ecmaVersion: 6,
-		ecmaFeatures: {
-			experimentalObjectRestSpread: true
-		}
+		parser: 'babel-eslint',
+		ecmaVersion: 2018
 	},
 	rules: {
 		indent: ['error', 'tab'],
 		'linebreak-style': ['error', 'unix'],
 		quotes: ['error', 'single'],
-		semi: ['error', 'never'],
+		semi: ['error', 'always'],
 		'no-console': 'off'
 	}
-}
+};
