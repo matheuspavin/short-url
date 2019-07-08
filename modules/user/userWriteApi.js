@@ -13,3 +13,11 @@ router.post('/', async (req, res, next) => {
 		return next(error);
 	}
 });
+
+router.delete('/:id', async (req, res, next) => {
+	try {
+		res.json(await userManager.delete(req.params));
+	} catch (error) {
+		return next(error);
+	}
+});
