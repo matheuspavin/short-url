@@ -23,3 +23,20 @@ exports.get = async ({ id }) => {
 	if (!url) throw Boom.notFound('Não foi possível encontrar a url!');
 	return url;
 };
+
+exports.getStats = async () => {
+	const [urlCount, hits, topUrls] = await Promise.all([
+		urlModel.find().countDocuments(),
+		urlModel.aggregate([
+			{ $match: {} },
+			{ $group: { _id: null, hits: { $sum: '$hits' } } },
+			{ $limit: 10 }
+		]),
+		urlModel
+			.find()
+			.sort('-hits')
+			.limit(10)
+	]);
+
+	return { hits: hits[0].hits, urlCount, topUrls };
+};
