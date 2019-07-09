@@ -24,16 +24,19 @@ exports.get = async ({ id }) => {
 	return url;
 };
 
-exports.getStats = async () => {
+exports.getStats = async ({ id }) => {
+	const $match = {};
+	if (id) $match.user = id;
+
 	const [urlCount, hits, topUrls] = await Promise.all([
-		urlModel.find().countDocuments(),
+		urlModel.find($match).countDocuments(),
 		urlModel.aggregate([
-			{ $match: {} },
+			{ $match },
 			{ $group: { _id: null, hits: { $sum: '$hits' } } },
 			{ $limit: 10 }
 		]),
 		urlModel
-			.find()
+			.find($match)
 			.sort('-hits')
 			.limit(10)
 	]);

@@ -8,7 +8,7 @@ module.exports = app => {
 
 router.get('/', async (req, res, next) => {
 	try {
-		res.json(await urlManager.getStats());
+		res.json(await urlManager.getStats({}));
 	} catch (error) {
 		next(error);
 	}
