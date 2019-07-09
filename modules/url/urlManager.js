@@ -17,3 +17,9 @@ exports.create = async ({ userId, url }) => {
 exports.delete = async ({ id }) => {
 	return urlModel.findByIdAndDelete(id);
 };
+
+exports.get = async ({ id }) => {
+	const url = await urlModel.findById(id);
+	if (!url) throw Boom.notFound('Não foi possível encontrar a url!');
+	return url;
+};

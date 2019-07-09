@@ -70,9 +70,7 @@ async function start() {
 	// Error handling
 	//eslint-disable-next-line
 	app.use((err, req, res, next) => {
-		console.log('lucas =)', err);
 		const error = Boom.isBoom(err) ? err : Boom.boomify(err);
-
 		res
 			.status(error.output.statusCode)
 			.json({ message: error.message, error: error.output.payload.error });
